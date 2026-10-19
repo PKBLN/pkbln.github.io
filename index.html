@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PKBLN — Projekte / Projects</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#111}
+    header{display:flex;justify-content:space-between;align-items:center}
+    .lang {margin-left:0.5rem}
+    .project{border:1px solid #eee;padding:0.75rem;margin:0.5rem 0;border-radius:6px}
+    .hidden{display:none}
+    a{color:#0366d6;text-decoration:none}
+    a:hover{text-decoration:underline}
+    footer{margin-top:2rem;color:#666;font-size:0.9rem}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .controls{display:flex;gap:0.5rem}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PKBLN</h1>
+    <div class="controls" role="navigation" aria-label="Sprachwahl / language">
+      <button id="btn-de" aria-pressed="true">DE</button>
+      <button id="btn-en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="de">
+      <h2>Projekte</h2>
+      <p>Eine Übersicht meiner öffentlichen Repositories. (Wird automatisch gefüllt.)</p>
+      <div id="projects-de" aria-live="polite">
+        <!-- Platzhalter: Projektliste (Name + Beschreibung + Link) -->
+      </div>
+    </section>
+
+    <section id="en" class="hidden">
+      <h2>Projects</h2>
+      <p>An overview of my public repositories. (Will be populated automatically.)</p>
+      <div id="projects-en" aria-live="polite">
+        <!-- Placeholder: project list -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>© PKBLN — Hosted on GitHub Pages</small>
+  </footer>
+
+  <script>
+    const de = document.getElementById('de'), en = document.getElementById('en');
+    const btnDe = document.getElementById('btn-de'), btnEn = document.getElementById('btn-en');
+    btnDe.addEventListener('click', ()=>{ de.classList.remove('hidden'); en.classList.add('hidden'); btnDe.setAttribute('aria-pressed','true'); btnEn.setAttribute('aria-pressed','false'); });
+    btnEn.addEventListener('click', ()=>{ en.classList.remove('hidden'); de.classList.add('hidden'); btnEn.setAttribute('aria-pressed','true'); btnDe.setAttribute('aria-pressed','false'); });
+
+    // Load projects list from projects.json and render same content for DE/EN
+    async function loadProjects(){
+      try {
+        const res = await fetch('/projects.json');
+        if(!res.ok) return;
+        const projects = await res.json();
+        const make = (p)=>`<div class="project"><a href="${p.html_url}" target="_blank" rel="noopener">${p.name}</a><div>${p.description||''}</div></div>`;
+        document.getElementById('projects-de').innerHTML = projects.map(make).join('') || '<p>Keine Projekte gefunden.</p>';
+        document.getElementById('projects-en').innerHTML = projects.map(make).join('') || '<p>No projects found.</p>';
+      } catch(e){
+        console.warn('projects.json konnte nicht geladen werden', e);
+      }
+    }
+    loadProjects();
+  </script>
+</body>
+</html>

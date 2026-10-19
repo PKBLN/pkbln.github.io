@@ -1,0 +1,42 @@
+[
+  {
+    "name": "CalendarFXNet",
+    "description": "Calendar component - translated from Java",
+    "html_url": "https://github.com/PKBLN/CalendarFXNet"
+  },
+  {
+    "name": "ClaudeConversationViewer",
+    "description": "Renderer for conversation.json from Claude",
+    "html_url": "https://github.com/PKBLN/ClaudeConversationViewer"
+  },
+  {
+    "name": "DiffTool",
+    "description": "File comparison tool in just one HTML file",
+    "html_url": "https://github.com/PKBLN/DiffTool"
+  },
+  {
+    "name": "phpBB2PDF",
+    "description": "Converts phpBB mySQL-dumps to PDF",
+    "html_url": "https://github.com/PKBLN/phpBB2PDF"
+  },
+  {
+    "name": "PingerGUI",
+    "description": "GUI (WPF) with network tools like ping, traceroute and a multithreading scanner",
+    "html_url": "https://github.com/PKBLN/PingerGUI"
+  },
+  {
+    "name": "TradeRepublic-tracker",
+    "description": "Track your trade republic account with the exported CSV as source",
+    "html_url": "https://github.com/PKBLN/TradeRepublic-tracker"
+  },
+  {
+    "name": "Vault3Converter",
+    "description": "Vault3 to Joplin converter",
+    "html_url": "https://github.com/PKBLN/Vault3Converter"
+  },
+  {
+    "name": "Windows-Scripts",
+    "description": "Little office helpers",
+    "html_url": "https://github.com/PKBLN/Windows-Scripts"
+  }
+]
